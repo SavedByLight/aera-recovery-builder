@@ -122,8 +122,8 @@ jobs:
     - name: Check Build Makefile
       run: |
         cd android-recovery
-        if [ -f ${{ inputs.DEVICE_PATH }}/twrp_${{ inputs.DEVICE_NAME}}.mk ]; then
-            echo "DEVICE_MAKEFILE=twrp_${{ inputs.DEVICE_NAME }}" >> $GITHUB_ENV
+        if [ -f ${{ inputs.DEVICE_PATH }}/aera_${{ inputs.DEVICE_NAME}}.mk ]; then
+            echo "DEVICE_MAKEFILE=aera_${{ inputs.DEVICE_NAME }}" >> $GITHUB_ENV
         elif [ -f ${{ inputs.DEVICE_PATH }}/omni_${{ inputs.DEVICE_NAME}}.mk ]; then
             echo "DEVICE_MAKEFILE=omni_${{ inputs.DEVICE_NAME }}" >> $GITHUB_ENV
         else
@@ -164,7 +164,7 @@ jobs:
       with:
         files: |
           android-recovery/out/target/product/${{ inputs.DEVICE_NAME }}/${{ inputs.BUILD_TARGET }}.*
-        name: Unofficial TWRP for ${{ inputs.DEVICE_NAME }} // ${{ env.BUILD_DATE }}
+        name: Unofficial AERA for ${{ inputs.DEVICE_NAME }} // ${{ env.BUILD_DATE }}
         tag_name: ${{ github.run_id }}
         body: |
           Build: ${{ inputs.MANIFEST_BRANCH }}
@@ -177,7 +177,7 @@ jobs:
       with:
         files: |
           android-recovery/out/target/product/${{ inputs.DEVICE_NAME }}/vendor_boot.*
-        name: Unofficial TWRP for ${{ inputs.DEVICE_NAME }} // ${{ env.BUILD_DATE }}
+        name: Unofficial AERA for ${{ inputs.DEVICE_NAME }} // ${{ env.BUILD_DATE }}
         tag_name: ${{ github.run_id }}
         body: |
           Build: ${{ inputs.MANIFEST_BRANCH }}
