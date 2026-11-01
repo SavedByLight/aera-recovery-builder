@@ -1,15 +1,15 @@
-name: Recovery Builder - TWRP
+name: Recovery Builder - AERA
 
 on:
   workflow_dispatch:
     inputs:
       MANIFEST_BRANCH:
-        description: 'TWRP Minimal-Manifest Branch'
+        description: 'AERA Minimal-Manifest Branch'
         required: false
-        default: 'twrp-16.0'
+        default: 'aera-16.0'
         type: choice
         options:
-        - twrp-16.0
+        - aera-16.0
       DEVICE_TREE:
         description: 'Custom Recovery Tree' # Your already made Device Tree for TWRP
         required: true
@@ -38,7 +38,7 @@ on:
 
 jobs:
   build:
-    name: Build TWRP by ${{ github.actor }}
+    name: Build AERA by ${{ github.actor }}
     runs-on: ubuntu-latest
     if: github.event.repository.owner.id == github.event.sender.id
     env:
@@ -96,8 +96,8 @@ jobs:
       uses: haya14busa/action-cond@v1
       id: manifest
       with:
-        cond: ${{ inputs.MANIFEST_BRANCH == 'twrp-16.0' }}
-        if_true: https://github.com/TWRP-Test/platform_manifest_twrp_aosp.git
+        cond: ${{ inputs.MANIFEST_BRANCH == 'aera-16.0' }}
+        if_true: https://github.com/AERA-Recovery/android_manifest.git
 
     - name: Initialize Repo
       run: |
